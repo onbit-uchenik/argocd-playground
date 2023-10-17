@@ -2,18 +2,16 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: hello-argocd
-  namespace: default
 spec:
   destination:
-    name: ''
     namespace: default
     server: 'https://kubernetes.default.svc'
   source:
     path: templates
-    repoURL: 'git@github.com:postman-eng/argocd-playground.git'
+    repoURL: 'https://github.com/onbit-uchenik/argocd-playground.git'
     targetRevision: HEAD
     helm:
       valueFiles:
-        - templates/values.yaml
+        - values.yaml
   sources: []
-  project: defualt
+  project: default

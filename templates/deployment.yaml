@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{ .Values.namespace }}
+  name: {{ .Values.deployment.name }}
+spec:
+  template:
+    metadata:
+      name: hello-world-pod
+    spec:
+      containers:
+        - name: hello-world
+          image: "430387712027.dkr.ecr.us-east-1.amazonaws.com/service/k8-s-hello-world:{{ .Values.image }}"
+          command: ["node", "app.js"]

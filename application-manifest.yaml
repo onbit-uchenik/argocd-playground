@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hello-argocd
+  namespace: pm-onbit-uchenik-experiment
+spec:
+  project: default
+  source:
+    chart: hello-world-application
+    repoURL: 
+    targetRevision: 1.16.1
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: kubeseal

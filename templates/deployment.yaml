@@ -4,6 +4,7 @@ metadata:
   namespace: {{ .Values.namespace }}
   name: {{ .Values.deployment.name }}
 spec:
+  replicas: 2
   template:
     metadata:
       name: hello-world-pod

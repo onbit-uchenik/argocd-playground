@@ -8,10 +8,10 @@ spec:
   source:
     chart: hello-world-application
     repoURL: https://github.com/postman-eng/argocd-playground.git/templates
-    targetRevision: 1.16.1
+    targetRevision: 0.1.0
     helm:
       valueFiles:
         - values.yaml
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: kubeseal
+    namespace: pm-onbit-uchenik-experiment

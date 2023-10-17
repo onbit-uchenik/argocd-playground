@@ -1,4 +1,4 @@
-apiVersion: v2
+apiVersion: v1
 name: hello-argocd
 type: application
 version: 0.1.0

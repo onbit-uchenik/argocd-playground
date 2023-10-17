@@ -4,10 +4,10 @@ metadata:
   name: hello-argocd
   namespace: pm-onbit-uchenik-experiment
 spec:
-  project: default
+  project: argocd-playground
   source:
     chart: hello-world-application
-    repoURL: 
+    repoURL: https://github.com/postman-eng/argocd-playground.git/templates
     targetRevision: 1.16.1
     helm:
       valueFiles:

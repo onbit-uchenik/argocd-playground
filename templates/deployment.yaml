@@ -1,15 +1,40 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.deployment.name }}
   name: {{ .Values.deployment.name }}
 spec:
-  replicas: 2
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: {{ .Values.deployment.name }}
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
   template:
     metadata:
-      name: hello-world-pod
+      labels:
+        app: {{ .Values.deployment.name }}
     spec:
       containers:
-        - name: hello-world
-          image: "430387712027.dkr.ecr.us-east-1.amazonaws.com/service/k8-s-hello-world:{{ .Values.image }}"
-          command: ["node", "app.js"]
+      - command:
+        - node
+        - app.js
+        image: "432983378316.dkr.ecr.us-east-1.amazonaws.com/service/k8-s-hello-world:{{ .Values.images }}"
+        imagePullPolicy: Always
+        name: hello-argocd
+        ports:
+        - containerPort: 1337
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30

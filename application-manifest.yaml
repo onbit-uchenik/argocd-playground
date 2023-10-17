@@ -2,16 +2,18 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: hello-argocd
-  namespace: pm-onbit-uchenik-experiment
+  namespace: default
 spec:
-  project: argocd-playground
+  destination:
+    name: ''
+    namespace: default
+    server: 'https://kubernetes.default.svc'
   source:
-    chart: hello-world-application
-    repoURL: https://github.com/postman-eng/argocd-playground.git/templates
-    targetRevision: 0.1.0
+    path: templates
+    repoURL: 'git@github.com:postman-eng/argocd-playground.git'
+    targetRevision: HEAD
     helm:
       valueFiles:
-        - values.yaml
-  destination:
-    server: "https://kubernetes.default.svc"
-    namespace: pm-onbit-uchenik-experiment
+        - templates/values.yaml
+  sources: []
+  project: defualt

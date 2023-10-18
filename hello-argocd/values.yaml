@@ -1,5 +1,7 @@
 namespace: default
-deployment:
+deployment1:
+  name: hello-argocd
+deployment2:
   name: hello-argocd
 image: 
   tag: k8-s-hello-world_1.0.0_master-67b5645__vul-1.33.0

@@ -2,14 +2,14 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: {{ .Values.deployment1.name }}
-  name: {{ .Values.deployment1.name }}
+    app: {{ .Values.deployment2.name }}
+  name: {{ .Values.deployment2.name }}
 spec:
   replicas: 1
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: {{ .Values.deployment1.name }}
+      app: {{ .Values.deployment2.name }}
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -18,7 +18,7 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ .Values.deployment1.name }}
+        app: {{ .Values.deployment2.name }}
     spec:
       containers:
       - command:

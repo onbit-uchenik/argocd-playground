@@ -9,7 +9,6 @@ spec:
   source:
     path: 'hello-argocd'
     repoURL: 'https://github.com/onbit-uchenik/argocd-playground.git'
-    targetRevision: 0.2.0
     helm:
       valueFiles:
         - values.yaml

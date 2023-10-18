@@ -1,0 +1,5 @@
+apiVersion: v3
+name: fast-and-furious
+type: application
+version: 0.1.0
+appVersion: 1.0

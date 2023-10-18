@@ -24,7 +24,7 @@ spec:
       - command:
         - node
         - app.js
-        image: "432983378316.dkr.ecr.us-east-1.amazonaws.com/service/k8-s-hello-world:{{ .Values.images }}"
+        image: "432983378316.dkr.ecr.us-east-1.amazonaws.com/service/k8-s-hello-world:{{ .Values.image.tag }}"
         imagePullPolicy: Always
         name: hello-argocd
         ports:

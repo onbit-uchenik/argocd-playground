@@ -1,19 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: hello-argocd
+  name: helm-guestbook
 spec:
   destination:
-    namespace: default
+    namespace: pm-onbit-uchenik-experiment
     server: 'https://kubernetes.default.svc'
   source:
-    path: 'helm-bootstrap'
-    chart: 'helm-bootstrap'
-    repoURL: 'https://github.com/onbit-uchenik/argocd-playground.git'
+    chart: 'helm-guestbook'
+    repoURL: 'https://github.com/argoproj/argocd-example-apps.git'
     targetRevision: 0.1.0
     helm:
       valueFiles:
         - values.yaml
-      version: v1
   sources: []
   project: default
